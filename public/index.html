@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Monitor - Threat Dashboard</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <header class="dashboard-header">
+            <div class="logo">
+                <h1>WORLD<span class="highlight">MONITOR</span></h1>
+                <div class="live-indicator">
+                    <span class="dot"></span> LIVE
+                </div>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-box">
+                    <span class="stat-label">Total Threats (48h)</span>
+                    <span class="stat-value" id="stat-total">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Top Threat Type</span>
+                    <span class="stat-value" id="stat-top-type">-</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Most Targeted Country</span>
+                    <span class="stat-value" id="stat-top-country">-</span>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <select id="type-filter">
+                    <option value="all">All Threat Types</option>
+                    <option value="war">⚔ War / Military</option>
+                    <option value="malware">Malware</option>
+                    <option value="ransomware">Ransomware</option>
+                    <option value="hack">Hack / Cyberattack</option>
+                    <option value="breach">Data Breach</option>
+                    <option value="exploit">Exploit</option>
+                    <option value="other">Other</option>
+                </select>
+                <select id="country-filter">
+                    <option value="all">All Countries</option>
+                </select>
+                <select id="time-filter">
+                    <option value="48">Last 48 Hours</option>
+                    <option value="24">Last 24 Hours</option>
+                </select>
+                <button id="refresh-btn">Force Refresh</button>
+            </div>
+        </header>
+        
+        <main class="dashboard-main">
+            <div class="map-container">
+                <div id="map"></div>
+                <div id="map-loading" class="loading-overlay">
+                    <div class="spinner"></div>
+                    <p>Acquiring Intelligence Data...</p>
+                </div>
+            </div>
+            
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h2>Recent Incidents</h2>
+                </div>
+                <div id="threat-list" class="threat-list">
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="app.js"></script>
+</body>
+</html>
